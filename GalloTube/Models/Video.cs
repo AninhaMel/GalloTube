@@ -22,7 +22,7 @@ public class Video
     [Column(TypeName = "UploadDate")]
     [Display(Name = "Data do video")]
     [Required(ErrorMessage = "Data do video é obrigatório")]
-    public Int16 MovieYear { get; set; }
+    public Int16 VideoDate { get; set; }
 
     [Display(Name = "Duração (em minutos)")]
     [Required(ErrorMessage = "A Duração é obrigatória")]
@@ -36,3 +36,4 @@ public class Video
     [Required(ErrorMessage = "O Título é obrigatório")]
     [StringLength(200, ErrorMessage = "O VideoFile deve possuir no máximo 200 caracteres")]
     public string VideoFile { get; set; }
+}
