@@ -1,6 +1,6 @@
 ﻿@model List<GalloTube.Models.Video>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Name"] = "Home Page";
 }
 
 <div class="text-center">
@@ -10,5 +10,5 @@
 
 @foreach (Video video in Model)
 {
-    <p>@Video.Id - @Video.Title</p>
+    <p>@Video.Id - @Video.Name</p>
 }

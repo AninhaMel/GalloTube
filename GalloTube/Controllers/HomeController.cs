@@ -9,17 +9,17 @@ namespace GalloTube.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IVideoRepository _movieRepository;
+    private readonly IVideoRepository _VideoRepository;
 
     public HomeController(ILogger<HomeController> logger, IVideoRepository videoRepository)
     {
         _logger = logger;
-        _movieRepository = VideoRepository;
+        _VideoRepository = VideoRepository;
     }
 
     public IActionResult Index()
     {
-        var movies = _VideoRepository.ReadAll();
+        var Videos = _VideoRepository.ReadAll();
         return View(Videos);
     }
 

@@ -36,4 +36,13 @@ public class Video
     [Required(ErrorMessage = "O Título é obrigatório")]
     [StringLength(200, ErrorMessage = "O VideoFile deve possuir no máximo 200 caracteres")]
     public string VideoFile { get; set; }
+    public object DateTime { get; internal set; }
+    public object UploadDate { get; internal set; }
+    public object Name { get; internal set; }
+    public object Thumbnail { get; internal set; }
+
+    public static implicit operator Video(Video v)
+    {
+        throw new NotImplementedException();
+    }
 }
