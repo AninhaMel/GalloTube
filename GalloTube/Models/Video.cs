@@ -1,48 +1,40 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace GalloTube.Models;
 
-[Table("Video")]
 public class Video
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    [Display(Name = "Nome")]
-    [Required(ErrorMessage = "O Nome é obrigatório")]
-    [StringLength(100, ErrorMessage = "O Nome deve possuir no máximo 100 caracteres")]
-    public string Title { get; set; }
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
 
-    [Display(Name = "Descricao")]
-    [Required(ErrorMessage = "A Descricao é obrigatória")]
-    [StringLength(8000, ErrorMessage = "A Descricao deve possuir no máximo 8000 caracteres")]
+
+    [Required]
+    [StringLength(8000)]
     public string Description { get; set; }
 
-    [Column(TypeName = "UploadDate")]
-    [Display(Name = "Data do video")]
-    [Required(ErrorMessage = "Data do video é obrigatório")]
-    public Int16 VideoDate { get; set; }
+    [Required]
+    public DateTime UploadDate { get; set; }
 
-    [Display(Name = "Duração (em minutos)")]
-    [Required(ErrorMessage = "A Duração é obrigatória")]
+    [Required]
     public Int16 Duration { get; set; }
 
+    [Required]
+    public string VideoFile { get; set; } 
+
     [StringLength(200)]
-    [Display(Name = "Thumbnail")]
-    public string Image { get; set; }
+    public string Thumbnail { get; set; }
 
-[Display(Name = "VideoFile")]
-    [Required(ErrorMessage = "O Título é obrigatório")]
-    [StringLength(200, ErrorMessage = "O VideoFile deve possuir no máximo 200 caracteres")]
-    public string VideoFile { get; set; }
-    public object DateTime { get; internal set; }
-    public object UploadDate { get; internal set; }
-    public object Name { get; internal set; }
-    public object Thumbnail { get; internal set; }
+    [NotMapped]
+    public string HourDuration { get {
+        return TimeSpan.FromMinutes(Duration).ToString(@"%h'h 'mm'min'");
+    } }
 
-    public static implicit operator Video(Video v)
-    {
-        throw new NotImplementedException();
-    }
+    
+    [NotMapped]
+    public List<Tag> Tags { get; set; }
 }

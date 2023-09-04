@@ -1,12 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using GalloTube.Models;
 
-namespace GalloTube.Interfaces
+namespace GalloTube.Interfaces;
+
+public interface IVideoTagRepository
 {
-    public interface IVideoTagRepository
-    {
-        
-    }
+    void Create(int VideoId, byte TagId);
+
+    void Delete(int VideoId, byte TagId);
+
+    void Delete(int VideoId);
+
+    List<VideoTag> ReadVideoTag();
+
+    List<Video>ReadVideosByTag(byte TagId);
+
+    List<Tag> ReadTagsByVideo(int VideoId);
 }
